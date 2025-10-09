@@ -1,7 +1,7 @@
 class Solution {
 public:
     string clearDigits(string s) {
-        vector<char>v; string ss="";
+       string v="";
         for(char c:s)
         {
             if(c>='0'&& c<='9')
@@ -11,10 +11,7 @@ public:
             }
             v.push_back(c);
         }
-        for(char c:v)
-        {
-             ss+=c;
-        }
-        return ss;
+       
+        return v;
     }
 };
