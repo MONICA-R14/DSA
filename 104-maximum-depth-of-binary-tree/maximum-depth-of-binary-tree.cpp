@@ -12,37 +12,10 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        int count=0;
-        int x=deep(root,count);
-        return x;
-    }
-    int deep(TreeNode* p,int count)
-    {
-        if(p==nullptr)
-        return count;
+         if(!root)
+         return 0;
 
-        if(p->left==nullptr && p->right==nullptr)
-        {
-            count++;
-            return count;
-        }
-        
-        if(p->left==nullptr)
-        {
-            count++;
-            return deep(p->right,count);
-        }
-
-        if(p->right==nullptr)
-        {
-            count++;
-            return deep(p->left,count);
-        }
-        
-        else
-        {
-            count++;
-            return max(deep(p->left,count),deep(p->right,count));
-        }
+         return 1+max(maxDepth(root->left),maxDepth(root->right));
     }
+    
 };
