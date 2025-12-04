@@ -12,27 +12,18 @@
 class Solution {
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-       if(nums.empty())
-         return nullptr;
-         if(nums.size()==1)
-         {
-            auto root=new TreeNode(nums[0]);
-            return root;
-         }
-        int n=nums.size(); int x=n/2;
-        int mid=nums[x];
-        auto root=new TreeNode(mid); 
-    
-        vector<int>v1(nums.begin(), nums.begin()+x);
-         root->left= sortedArrayToBST(v1);
+     return convert(nums,0,nums.size()-1);
+    }
+    private:
+    TreeNode* convert(vector<int>& nums, int left,int right)
+    {
+        if(left>right)
+        return nullptr;
 
-    
-         vector<int>v2( nums.begin()+x+1,nums.end());
-          root->right= sortedArrayToBST(v2);
-
-       
-           
+        int mid=(left+right)/2;
+        auto root=new TreeNode(nums[mid]);
+        root->left=convert(nums,left,mid-1);
+        root->right=convert(nums,mid+1,right);
         return root;
-        
     }
 };
