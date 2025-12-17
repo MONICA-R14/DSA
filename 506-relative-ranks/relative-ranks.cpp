@@ -1,6 +1,25 @@
 class Solution {
 public:
-     string place(int rank)
+    vector<string> findRelativeRanks(vector<int>& score) {
+        vector<int> v = score;
+        sort(v.begin(), v.end(), greater<int>());
+
+        unordered_map<int, int> rank;
+        for (int i = 0; i < v.size(); i++)
+            rank[v[i]] = i + 1;
+
+        vector<string> ans;
+        for (int s : score) {
+            int r = rank[s];
+            if (r == 1) ans.push_back("Gold Medal");
+            else if (r == 2) ans.push_back("Silver Medal");
+            else if (r == 3) ans.push_back("Bronze Medal");
+            else ans.push_back(to_string(r));
+        }
+        return ans;
+    }
+};
+     /*string place(int rank)
      {
         if(rank==1)
         return "Gold Medal";
@@ -29,4 +48,4 @@ public:
         }
         return ans;
     }
-};
+};*/
