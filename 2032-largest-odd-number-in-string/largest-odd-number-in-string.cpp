@@ -7,11 +7,12 @@ public:
         {
             if((num[i] - '0')  % 2 != 0)  //num[i] -'0' gives the char's integer value ----for string stoi(string);
             {
-                for(int k=0;k<=i;k++)
+                return num.substr(0, i + 1);
+                /*for(int k=0;k<=i;k++)
                 {
                     fire+=num[k];
                 
-                }
+                }*/
               // replace for loop with---- return num.substr(0, i + 1);
 
                 break;
