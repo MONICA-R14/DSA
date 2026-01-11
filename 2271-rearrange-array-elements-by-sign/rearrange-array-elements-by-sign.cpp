@@ -1,7 +1,24 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-    vector<int> u, v, res;
+   vector<int>res(nums.size());
+   int p=0,q=1;
+   for(int x:nums)
+   {
+    if(x>0)
+    {
+        res[p]=x;
+        p+=2;//cuz +ve elements do occur in even indices
+    }
+    else //-ve elements 
+    {
+        res[q]=x;
+        q+=2;
+    }
+   }
+   return res;
+   
+   /* vector<int> u, v, res;
 
     for (int i = 0; i < nums.size(); i++) {
         if (nums[i] > 0)
@@ -17,7 +34,7 @@ public:
         i++;
     }
 
-    return res;
+    return res;*/
 }
 
 };
