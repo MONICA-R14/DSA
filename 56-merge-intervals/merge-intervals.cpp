@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& nums) {
-        sort(nums.begin(),nums.end());
+       /* sort(nums.begin(),nums.end());
         vector<vector<int>>res;
         res.push_back(nums[0]);
         for(int i=1;i<nums.size();i++)
@@ -15,7 +15,7 @@ public:
             }
         }
         return res;
-
+*/
 
         /*sort(nums.begin(),nums.end());
         for(int i=0;i<nums.size()-1;)
@@ -29,5 +29,19 @@ public:
             else{ i++; }   
          }
          return nums;*/
+
+        sort(nums.begin(),nums.end());
+         vector<vector<int>>res;
+         res.push_back(nums[0]);
+         for(int i=1;i<nums.size();i++)
+         {
+            if(res.back()[1] >= nums[i][0])
+            {
+                res.back()[1]=max(res.back()[1],nums[i][1]);
+            }
+            else
+           { res.push_back({nums[i]}); }
+         }
+         return res;
     }
 };
