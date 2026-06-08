@@ -19,6 +19,21 @@ public:
     private:
     int dfs(TreeNode* root)
     {
+        if(root==nullptr) return 0;
+
+        int lh=dfs(root->left);
+        int rh=dfs(root->right);
+
+        res=max(res,lh+rh);
+        return 1+max(lh,rh);
+    }
+
+
+
+
+
+   /* int dfs(TreeNode* root)
+    {
         if(!root) return 0;
         int l=dfs(root->left);
         int r=dfs(root->right);
@@ -26,4 +41,5 @@ public:
          res=max(res,l+r);
         return 1+max(l,r);
     }
+    */
 };
