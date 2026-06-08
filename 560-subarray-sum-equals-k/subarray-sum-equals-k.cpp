@@ -7,7 +7,7 @@ public:
 
       int prefix=0;
       int count=0;
-      unordered_map<int,int>mp;
+      map<int,int>mp;
       mp[0]=1; //let 0 be there once (freq = 1) for zero
       for(int num : nums)
       {
