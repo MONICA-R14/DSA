@@ -4,79 +4,49 @@ public:
         //refer takeuforward video
         int n=grid.size();
         int m=grid[0].size();
-        int count=0;
+        int c=0;
         vector<vector<int>>visited(n,vector<int>(m,0));
 
-        for(int r=0;r<n;r++)
+        for(int i=0;i<n;i++)
         {
-            for(int c=0;c<m;c++)
+            for(int j=0;j<m;j++)
             {
-                if(!visited[r][c] && grid[r][c]=='1')
+                if(grid[i][j]=='1' && !visited[i][j] )
                 {
-                    bfs(r,c,visited,grid);
-                    count++;
+                    bfs(i,j,n,m,visited,grid);
+                    c++;
                 }
             }
         }
-        return count;
+        return c;
     }
-    void bfs(int r,int c,vector<vector<int>>&visited,vector<vector<char>>&grid)
+    void bfs(int r,int c,int n,int m,vector<vector<int>>& visited,vector<vector<char>>& grid)
     {
-        visited[r][c]=1;
-
-        int n=grid.size();
-        int m=grid[0].size();
-
         queue<pair<int,int>>q;
         q.push({r,c});
+        visited[r][c]=1;
 
         while(!q.empty())
         {
-            int row=q.front().first;
-            int clm=q.front().second;
+            int row[]={-1,0,1,0};
+            int clm[]={0,1,0,-1};
+
+            r=q.front().first;
+            c=q.front().second;
             q.pop();
 
-            for(int delr=-1;delr<=1;delr++)
+            for(int i=0;i<4;i++)
             {
-                for(int delc=-1;delc<=1;delc++)
-                {
-                    int x=row+delr;
-                    int y=clm+delc;
-                     //skip self box
-                     if(delr == 0 && delc == 0)
-                             continue;
+                int newr=r+row[i];
+                int newc=c+clm[i];
 
-                    // skip diagonals
-                    if(abs(delr) == 1 && abs(delc) == 1)
-                        continue;
-                     
 
-                    if(x>=0 && x<n && y>=0 && y<m && !visited[x][y] && grid[x][y]=='1')
-                    {
-                        visited[x][y]=1;
-                        q.push({x,y});
-                    }
-
-                       /* here we dont need to check 8 directions , we only see 4 sides avoiding diagonals so only we skipped taht part and self part if u dont like that use this for better way
-                       int delrow[] = {-1, 0, 1, 0};
-int delcol[] = {0, 1, 0, -1};
-
-for(int i = 0; i < 4; i++)
-{
-    int x = row + delrow[i];
-    int y = clm + delcol[i];
-
-    if(x >= 0 && x < n &&
-       y >= 0 && y < m &&
-       !visited[x][y] &&
-       grid[x][y] == '1')
-    {
-        visited[x][y] = 1;
-        q.push({x,y});
-    }
-}
-                       */
-                }
+                if(newr >= 0 && newr < n && newc >= 0 && newc < m && !visited[newr][newc] &&
+                     grid[newr][newc]=='1')
+                     {
+                        visited[newr][newc]=1;
+                        q.push({newr,newc});
+                     } 
             }
         }
     }
