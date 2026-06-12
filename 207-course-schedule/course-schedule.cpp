@@ -10,14 +10,10 @@ public:
         
         //if [1,0] then 0-->1 , 0 should happen before 1 so, 0-->1
         // [2,1] then 0-->1-->2 is correct , 0 before 1 , 1 before 2 
-        
-        //but striver used [1,0] , 1-->0 , check which is correct
-        //both will give ans for this question 
-      
 
         for(auto it:prerequisites)
         {
-            adj[it[0]].push_back(it[1]);
+            adj[it[1]].push_back(it[0]);
         }
         
         vector<int>indegree(V,0);
