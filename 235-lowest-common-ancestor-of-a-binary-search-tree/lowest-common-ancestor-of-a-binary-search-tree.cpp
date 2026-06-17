@@ -11,30 +11,22 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-         
-         if(!root) return root;
-         if(p==nullptr || q==nullptr) return root;
+        //ITERATIVE METHOD
+            while(root)
+            {
+                if(p->val < root->val && q->val <root->val)//both present on left subtree so move left
+                  root=root->left;
+                else if(p->val >root->val && q->val > root->val)//both are in right subtree so move right
+                  root=root->right;
+                else //both present in distinct subtree p in left , q in right or vice versa
+                 return root;
+            }
+            return root;
 
-         if(p->val >= root->val && q->val <= root->val) 
-           return root; 
-          if(p->val <= root->val && q->val >= root->val) 
-           return root; 
+       //RECURSION METHOD
 
-          if(p->val > root->val && q->val >root->val)
-           root= lowestCommonAncestor(root->right,p,q);
-
-           else 
-             root=lowestCommonAncestor(root->left,p,q);
-
-             return root;
-        
-        
-        
-        
-        
-        
-        
-        /*if(p==root||q==root)
+       /*
+        if(p==root||q==root)
         return root;
 
         if((p->val > root->val && q->val < root->val)|| (p->val < root->val && q->val > root->val)) 
@@ -52,6 +44,6 @@ public:
          }
          else 
          return root;// this is not required. Adding it to avoid error like "missing return .."
-         */
+        */ 
     }
 };
