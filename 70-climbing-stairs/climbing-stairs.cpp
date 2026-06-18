@@ -4,14 +4,14 @@ public:
     int climbStairs(int n) {
         if(n<=1)
         return 1;
-        long long a=1,b=1;
-        long long c;
+        long long prev1=1,prev2=1;
         for(int i=2;i<=n;i++)
         {
-            c=a+b;
-            a=b;
-            b=c;
+            long long temp=prev1+prev2; //eg: in fibo (prev1)1,(prev2)1,2,3,5,...,prev1=1,prev2=1 
+            //at next stage prev1=prev2=1 , then prev2=3(prev1+prev2) ,
+            prev1=prev2;
+            prev2=temp;
         }
-        return b;
+        return prev2;
     }
 };
