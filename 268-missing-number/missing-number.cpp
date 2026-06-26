@@ -1,23 +1,23 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-          int n=nums.size();
-          int totalsum=(n*(n+1))/2; //sum of n elements
+         int n=nums.size();
+          int totalsum=(n*(n+1))/2; //sum of n elements  Math:)
           for(int i=0;i<n;i++)
           {
             totalsum-=nums[i];
           }
-          return totalsum;
+          return totalsum; 
           
           
           
-          /*int res=nums.size();
+         /*int res=nums.size();
 
           for(int i=0;i<nums.size();i++)
           {
             res += i-nums[i];
           }
-          return res;*/
+          return res; */
 
 
      
