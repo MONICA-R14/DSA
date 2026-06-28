@@ -8,7 +8,7 @@ public:
         unordered_map<char,int>mp;
         for(int j=0;j<s.length();j++)
         {
-           if(mp.find(s[j])!=mp.end() && mp[s[j]]>=i)
+           if(mp.find(s[j])!=mp.end() && mp[s[j]]>=i) //https://claude.ai/share/d64a504d-172c-4c3b-b19f-f35a68672a34    ref why mp[s[j]]>=i is  used
            {
              i=mp[s[j]]+1;//i move to next index of (old) repeated char 
            }
